@@ -11,10 +11,14 @@ Thank you Lokesh Dhakar for a wonderful tool.
 
 The specific version of Color Thief we are using can be found here: https://github.com/SvenWoltmann/color-thief-java
 
-Author's Name: Sven Woltmann
+Author's Name: Sven Woltmann <br />
 Author's github: https://github.com/SvenWoltmann
 
 Thank you Sven Woltmann for a great java implementation of the tool.
+
+Moreover this project makes use of the Processing Library. Information on the Processing Project can be found at: https://processing.org <br />
+
+Thank you for the team that helps to develop it! <br />
 
 The goals of this project are to:
 
