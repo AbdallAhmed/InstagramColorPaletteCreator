@@ -18,9 +18,11 @@ public class UsingProcessingModifications extends PApplet {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		//connecting the application to the processing core!
 		PApplet.main("UsingProcessingModifications");
 	}
 	
+	//global variables to be used throughout the processing functions
 	int[][] pal;
 	int numberColors = 10;
 	PImage img;
@@ -29,6 +31,7 @@ public class UsingProcessingModifications extends PApplet {
 	
 	
 	public void settings(){
+		//loading the image and obtaining the palette
 		BufferedImage source = null;
 		try {
 			source = ImageIO.read(new File(imageStr));
@@ -47,6 +50,7 @@ public class UsingProcessingModifications extends PApplet {
 //			}
 //			System.out.println();
 //		}
+		//now loading the image for Processing to use
 		img = loadImage(imageStr);
 		imgUntouched = loadImage(imageStr);
 		
@@ -71,25 +75,32 @@ public class UsingProcessingModifications extends PApplet {
 		
 		
         //size(100*numberColors,400);
+		
+		//resizing the processing window
 		size(1080, 900);
     }
 
     public void setup(){
         //fill(120,50,240);
-    	System.out.println(width/pal.length);
+    		System.out.println(width/pal.length);
     }
 
     
     public void draw(){
     		noLoop();
     		
+    		//give the whole screen a white background
     		fill(255);
     		rect(-10, -10, width+10, height+10);
+    		
+    		//resize the image
     		img.resize(width-50, 0);
     		image(img, 25, 15);
     		
     		//fill(255);
     		//rect(0, img.height-15, width, height-img.height);
+    		
+    		//add the color palette to the bottom of the image
     		for(int i = 0; i < pal.length; i++) {
     			fill(pal[i][0], pal[i][1], pal[i][2]);
     			//System.out.println((width/pal.length) * i );
@@ -101,20 +112,8 @@ public class UsingProcessingModifications extends PApplet {
     			}
     		}
     		
+ 
     		save("test.jpg");
-//        fill(pal[0][0], pal[0][1], pal[0][2]);
-//        rect(0,0,width/5,height);
-//        
-//        fill(pal[1][0], pal[1][1], pal[1][2]);
-//        rect(width/5,0,width/5,height);
-//        
-//        fill(pal[2][0], pal[2][1], pal[2][2]);
-//        rect((width/5)*2,0,width/5,height);
-//        
-//        fill(pal[3][0], pal[3][1], pal[3][2]);
-//        rect((width/5)*3,0,width/5,height);
-//        
-//        fill(pal[4][0], pal[4][1], pal[4][2]);
-//        rect((width/5)*4,0,width/5,height);
+
     }
 }
