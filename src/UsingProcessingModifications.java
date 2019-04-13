@@ -24,10 +24,10 @@ public class UsingProcessingModifications extends PApplet {
 	
 	//global variables to be used throughout the processing functions
 	int[][] pal;
-	int numberColors = 10;
+	int numberColors = 11;
 	PImage img;
 	PImage imgUntouched;
-	String imageStr = "./Images/IMG_8558.JPG";
+	String imageStr = "./Images/IMG_8305.JPG";
 	
 	
 	public void settings(){
@@ -57,6 +57,20 @@ public class UsingProcessingModifications extends PApplet {
 		
 		System.out.println(img.height + " " + img.width);
 		
+		//img.resize(1080,0);
+		
+		if(img.width >= img.height)
+		{
+			img.resize(1080-50, 0);
+			size(1080, (int)(img.height*1.25));
+		}
+		else {
+			img.resize(0, 1080-50);
+			size( (int)(img.width*1.25), 1080);
+		}
+			
+		System.out.println(img.height + " " + img.width);
+		
 //		img.loadPixels();
 //		
 //		System.out.println(img.pixels.length);
@@ -73,11 +87,8 @@ public class UsingProcessingModifications extends PApplet {
 //		}
 		
 		
-		
-        //size(100*numberColors,400);
-		
 		//resizing the processing window
-		size(1080, 900);
+		
     }
 
     public void setup(){
@@ -94,23 +105,41 @@ public class UsingProcessingModifications extends PApplet {
     		rect(-10, -10, width+10, height+10);
     		
     		//resize the image
-    		img.resize(width-50, 0);
-    		image(img, 25, 15);
+    		//img.resize(width-50, 0);
+    		
+    		if(img.width > img.height)
+    			image(img, 25, 15);
+    		else
+    			image(img, 15, 25);
     		
     		//fill(255);
     		//rect(0, img.height-15, width, height-img.height);
     		
     		//add the color palette to the bottom of the image
+    		System.out.println(pal.length);
+
     		for(int i = 0; i < pal.length; i++) {
     			fill(pal[i][0], pal[i][1], pal[i][2]);
-    			//System.out.println((width/pal.length) * i );
-    			if(i == pal.length-1) {
-    				rect( (width/pal.length) * i, img.height + 30 , (width/pal.length)+(width-(width/pal.length)), height-img.height);
-    			}
-    			else {
-    				rect( (width/pal.length) * i, img.height + 30 , (width/pal.length), height-img.height);
-    			}
+    			
+    			//the width of the image is equal to:
+    			// total width - 50 (buffer on the side)
+    			// this minus 10 * the number of spaces there will be
+    			// divide by the length
+    			int thisWidth = (width-(10*(pal.length-1))-50)/pal.length;
+    			//System.out.println(thisWidth);
+    				//start each image at the buffer + 25 + the width * the iteration
+    			rect(25+((thisWidth+10)*i), (img.height+15)+10, thisWidth, (height-(img.height+15))-25);
     		}
+//    		for(int i = 0; i < pal.length; i++) {
+//    			fill(pal[i][0], pal[i][1], pal[i][2]);
+//    			//System.out.println((width/pal.length) * i );
+//    			if(i == pal.length-1) {
+//    				rect( (width/pal.length) * i, img.height + 30 , (width/pal.length)+(width-(width/pal.length)), height-img.height);
+//    			}
+//    			else {
+//    				rect( (width/pal.length) * i, img.height + 30 , (width/pal.length), height-img.height);
+//    			}
+//    		}
     		
  
     		save("test.jpg");
