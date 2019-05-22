@@ -21,7 +21,7 @@ Moreover this project makes use of the Processing Library. Information on the Pr
 Thank you for the team that helps to develop it! <br />
 
 The goals of this project are to:
-
+ 
 * Extract the color palette of a photo [✔️]
 * Add the color palette to the bottom / side of the frame [🔜]
 * Rescale so it fits on Instagram automatically [❌]
